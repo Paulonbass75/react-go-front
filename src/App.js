@@ -1,7 +1,11 @@
-import Home from "./components/Home";
-import Items from "./components/Items";
+
+import { Outlet, Link } from "react-router-dom";
+import { useState } from "react";
+
 
 function App() {
+  const [jwtToken, setJwtToken] = useState("");
+  
   return (
     <div className="container">
       <div class="row">
@@ -9,9 +13,14 @@ function App() {
           <h1>React With Go Sandbox</h1>
         </div>
         <div className="col text-end">
-          <a href="">
+         {jwtToken ===""          
+        ? <Link to="/Login">
             <span className="badge bg-success">Login</span>
-          </a>
+          </Link>
+        : <Link to="#!">
+            <span className="badge bg-danger">Logout</span>
+          </Link>
+        }
         </div>
         <hr className="mb-3" />
       </div>
@@ -19,29 +28,34 @@ function App() {
         <div className="col-md-2">
           <nav>
             <div className="list-group">
-              <a href="/" className="list-group-item list-group-item-action">
+              <Link to="/" className="list-group-item list-group-item-action">
                 Home
-              </a>
-              <a href="" className="list-group-item list-group-item-action">
+              </Link>
+              <Link to="/Categories" className="list-group-item list-group-item-action">
+                Categories
+              </Link>
+              <Link to="/Items" className="list-group-item list-group-item-action">
                 Items
-              </a>
-              <a href="" className="list-group-item list-group-item-action">
-                catagories
-              </a>
-              <a href="" className="list-group-item list-group-item-action">
-                add items
-              </a>
-              <a href="" className="list-group-item list-group-item-action">
+              </Link>
+              {jwtToken !=="" &&
+              <>
+              <Link to="/admin/addItems/0" className="list-group-item list-group-item-action">
+                Add Items
+              </Link>
+              <Link to="/Admin" className="list-group-item list-group-item-action">
                 Manage Catalogue
-              </a>
-              <a href="" className="list-group-item list-group-item-action">
+              </Link>
+              <Link to="/GraphQl" className="list-group-item list-group-item-action">
                 GraphQl
-              </a>
+              </Link>
+              </>
+              }
             </div>
           </nav>
         </div>
         <div className="col-md-10 ">
-          <Home />
+          <Outlet />
+          
         </div>
       </div>
     </div>

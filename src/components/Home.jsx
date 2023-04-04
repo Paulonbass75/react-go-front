@@ -1,14 +1,17 @@
 import Logo from "./../images/store_logo.png";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
-    <div className="text-center">
-      <h2>Home</h2>
-      <p>Home page body content</p>
-      <hr />
-      <img src={Logo} alt="Logo" />
-    </div>
+      <div className="text-center">
+        <h2>Home</h2>
+        <p>Home page body content</p>
+        <hr />
+        <Link to="/Items">
+          <img src={Logo} alt="Logo" />
+        </Link>
+      </div>
     </>
   );
 };
