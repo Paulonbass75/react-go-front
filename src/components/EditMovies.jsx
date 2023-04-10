@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Edititems() {
+export default function Editmovies() {
   return (
     <div>
-    <h2>Edititems</h2>
+    <h2>Edit Movies</h2>
     <hr />
     </div>
   )

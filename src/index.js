@@ -4,12 +4,12 @@ import App from './App';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ErrorPage from './components/ErrorPage';
 import Home from './components/Home';
-import Items from './components/Items';
+import Movies from './components/Movies';
 import Categories from './components/Categories';
-import EditItems from './components/EditItems';
+import EditMovies from './components/EditMovies';
 import GraphQl from './components/GraphQl';
 import Login from './components/Login';
-import Item from './components/Item';
+import Movie from './components/Movie';
 
 import ManageCatalogue from './components/ManageCatalogue';
 
@@ -23,12 +23,13 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/Categories", element: <Categories /> },
-      { path: "/Items", element: <Items /> },
-      { path: "/Items/:id", element: <Item /> },
-      { path: "/admin/addItems/0", element: <EditItems /> },
+      { path: "/Movies", element: <Movies /> },
+      { path: "/Movies/:id", element: <Movies /> },
+      { path: "/admin/addMovies/0", element: <EditMovies /> },
       { path: "/GraphQl", element: <GraphQl /> },
       { path: "/Login", element: <Login /> },
       { path: "/Admin", element: <ManageCatalogue /> },
+      { path: "/Movie/:id", element: <Movie /> },
     ],
   },
 ]);

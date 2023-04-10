@@ -8,7 +8,7 @@ const Home = () => {
         <h2>Home</h2>
         <p>Home page body content</p>
         <hr />
-        <Link to="/Items">
+        <Link to="/Movies">
           <img src={Logo} alt="Logo" />
         </Link>
       </div>
