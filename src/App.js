@@ -52,7 +52,7 @@ function App() {
                 to="/Movies"
                 className="list-group-item list-group-item-action"
               >
-                Movies
+                Items
               </Link>
               {jwtToken !== "" && (
                 <>
