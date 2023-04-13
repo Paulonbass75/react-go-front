@@ -12,7 +12,7 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     //build request payload
     let payload = {
@@ -28,7 +28,7 @@ export default function Login() {
       body: JSON.stringify(payload),
     };
 
-    fetch(`/authenticate`, requestOptions)
+    await fetch(`/authenticate`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
