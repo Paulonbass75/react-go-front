@@ -1,4 +1,3 @@
-
 import { useNavigate, Outlet, Link } from "react-router-dom";
 import {  useState } from "react";
 import Alert from "./components/alert";
@@ -24,7 +23,7 @@ function App() {
         </div>
         <div className="col text-end">
           {jwtToken === "" ? (
-            <Link to="/Login">
+            <Link to="/login">
               <span className="badge bg-success">Login</span>
             </Link>
           ) : (
@@ -69,17 +68,17 @@ function App() {
                     Manage Catalogue
                   </Link>
                   <Link
-                    to="/GraphQl"
+                    to="/GraphQL"
                     className="list-group-item list-group-item-action"
                   >
-                    GraphQl
+                    GraphQL
                   </Link>
                 </>
               )}
             </div>
           </nav>
         </div>
-        <div className="col-md-10 ">
+        <div className="col-md-10">
           <Alert message={alertMessage} className={alertClassName} />
           <Outlet
             context={{

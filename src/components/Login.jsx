@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import Input from "./form/input";
+import Input from "./form/Input";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -70,10 +70,9 @@ export default function Login() {
           autocomplete="password-new"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <hr />
 
         <input type="submit" className="btn btn-primary" value="Login" />
       </form>
     </div>
   );
-}
+};
