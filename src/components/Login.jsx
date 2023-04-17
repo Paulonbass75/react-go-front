@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import Input from "./form/Input";
 
-export default function Login() {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,9 +22,9 @@ export default function Login() {
     const requestOptions = {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      credentials: "include",
+      credentials: 'include',
       body: JSON.stringify(payload),
     };
 
@@ -32,7 +32,7 @@ export default function Login() {
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
-          setAlertClassName("alert-danger");
+          setAlertClassName("alert alert-danger");
           setAlertMessage(data.message);
         } else {
           setJwtToken(data.access_token);
@@ -76,3 +76,5 @@ export default function Login() {
     </div>
   );
 };
+
+export default Login;
