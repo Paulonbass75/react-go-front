@@ -47,10 +47,10 @@ export default function EditMovies() {
     e.preventDefault();
   };
 
-  const handleChange = () => (e)=>{
+  const handleChange = () => (e) => {
     let value = e.target.value;
     let name = e.target.name;
-    setMovie({ ...movie, [name]: value, });
+    setMovie({ ...movie, [name]: value });
   };
 
   return (
@@ -91,7 +91,7 @@ export default function EditMovies() {
           errorDiv={hasError("runtime") ? "text-danger" : "d-none"}
           errorMsg={"Runtime required"}
         />
-      
+
         <Select
           title={"MPAA Rating"}
           className={"form-control"}
@@ -112,6 +112,10 @@ export default function EditMovies() {
           errorDiv={hasError("description") ? "text-danger" : "d-none"}
           errorMsg={"Description required"}
         />
+
+        <hr />
+
+        <h3>Genres</h3>
       </form>
     </div>
   );

@@ -13,7 +13,7 @@ export default function Movies() {
       headers: headers,
     };
 
-    fetch(`http://localhost:8080/movies`, requestOptions)
+    fetch(`/movies`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setMovies(data);
