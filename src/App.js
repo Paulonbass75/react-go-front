@@ -1,14 +1,12 @@
-import { useNavigate, Outlet, Link } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
+import { useNavigate, Outlet, Link } from "react-router-dom";
 import Alert from "./components/Alert";
-
 
 function App() {
   const [jwtToken, setJwtToken] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [alertClassName, setAlertClassName] = useState("d-none");
 
-  
   const [tickInterval, setTickInterval] = useState();
 
   const navigate = useNavigate();
@@ -19,48 +17,49 @@ function App() {
       credentials: "include",
     };
     fetch(`/logout`, requestOptions)
-    .catch(err => {console.log("loggged out",  err)
-  })
-  .finally(() => {
-    setJwtToken("");
-    toggleRefresh(false);
-  });
+      .catch((err) => {
+        console.log("loggged out", err);
+      })
+      .finally(() => {
+        setJwtToken("");
+        toggleRefresh(false);
+      });
     navigate("/login");
   };
-
 
   const toggleRefresh = useCallback(
     (status) => {
       console.log("clicked");
+
       if (status) {
         console.log("turn on ticking");
         let i = setInterval(() => {
-           const requestOptions = {
-             method: "GET",
-             credentials: "include",
-           };
-           fetch(`/refresh`, requestOptions)
-             .then((response) => response.json())
-             .then((data) => {
-               if (data.access_token) {
-                 setJwtToken(data.access_token);
-                 
-               }
-             })
-             .catch((error) => {
-               console.log("user not logged in");
-             });
+          const requestOptions = {
+            method: "GET",
+            credentials: "include",
+          };
+          fetch(`/refresh`, requestOptions)
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.access_token) {
+                setJwtToken(data.access_token);
+              }
+            })
+            .catch((error) => {
+              console.log("user not logged in");
+            });
         }, 600000);
         setTickInterval(i);
         console.log("tickInterval", i);
-      
       } else {
         console.log("turn off ticking");
         console.log("turn off tickInterval", tickInterval);
         setTickInterval(null);
         clearInterval(tickInterval);
-       }
-    }, [tickInterval]);
+      }
+    },
+    [tickInterval]
+  );
 
   useEffect(() => {
     if (jwtToken === "") {
@@ -75,12 +74,10 @@ function App() {
             setJwtToken(data.access_token);
             toggleRefresh(true);
           }
-        })       
+        })
         .catch((error) => {
           console.log("user not logged in", error);
         });
-
-
     }
   }, [jwtToken, toggleRefresh]);
 
@@ -148,7 +145,7 @@ function App() {
           </nav>
         </div>
         <div className="col-md-10">
-                   <Alert message={alertMessage} className={alertClassName} />
+          <Alert message={alertMessage} className={alertClassName} />
           <Outlet
             context={{
               jwtToken,
