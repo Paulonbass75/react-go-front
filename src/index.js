@@ -23,9 +23,10 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/Movies", element: <Movies /> },
-      { path: "/Categories", element: <Categories /> },
       { path: "/Movies/:id", element: <Movie /> },      
+      { path: "/Categories", element: <Categories /> },
       { path: "/admin/Movie/0", element: <EditMovies /> },
+      { path: "/admin/Movie/:id", element: <EditMovies /> },
       { path: "/Admin", element: <ManageCatalogue /> },
       { path: "/GraphQl", element: <GraphQl /> },
       { path: "/Login", element: <Login /> },

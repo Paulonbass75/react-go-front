@@ -122,7 +122,7 @@ function App() {
               {jwtToken !== "" && (
                 <>
                   <Link
-                    to="/admin/addMovies/0"
+                    to="/admin/Movie/0"
                     className="list-group-item list-group-item-action"
                   >
                     Add Movies
